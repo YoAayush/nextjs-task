@@ -26,7 +26,7 @@ export default function DynamicForm() {
     });
 
     const onSubmit = (data: FormSchema) => {
-        console.log("Form Data", data);
+        // console.log("Form Data", data);
     };
 
     const onError = (errors: object) => {

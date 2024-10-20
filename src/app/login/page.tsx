@@ -29,7 +29,7 @@ export default function LoginPage() {
     }, []);
 
     const onSubmit = async (data: LoginFormInputs) => {
-        console.log("Data:", data);
+        // console.log("Data:", data);
         // Call the login API
         try {
             const res = await axios.post("/api/auth/jwt", {
@@ -43,17 +43,17 @@ export default function LoginPage() {
                 },
             });
             const generatedToken = res.data.token;
-            console.log("Generated Token:", generatedToken);
+            // console.log("Generated Token:", generatedToken);
 
             const res2 = await axios.post("/api/auth/login", {
                 email: data.email,
                 password: data.password,
             });
             const res2Data = res2.data.data;
-            console.log("Login Response:", res2Data);
+            // console.log("Login Response:", res2Data);
 
             if (generatedToken === res2Data.jwtToken) {
-                console.log("Login Successful");
+                // console.log("Login Successful");
                 if (isClient) {
                     // Only set localStorage if running on client-side
                     localStorage.setItem("authentication", "true");
