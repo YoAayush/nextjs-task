@@ -34,7 +34,7 @@ export default function DynamicForm() {
     };
 
     return (
-        <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-green-700">
+        <div className="w-[100vw] h-[100vh] flex justify-center items-center bg-gray-200 font-lato">
             <form onSubmit={handleSubmit(onSubmit, onError)} className="w-1/2 mx-auto p-6 bg-white shadow-lg rounded-lg space-y-6">
                 <h2 className="text-2xl font-semibold text-gray-800">Dynamic Form</h2>
 
