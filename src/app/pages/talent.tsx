@@ -31,7 +31,7 @@ export default function TalentPage() {
     }, []);
 
 
-    const roles: any = [
+    const roles = [
         ['Product Manager', 'UI/UX Designer', 'UI Designer', 'Flutter Developer', 'Product Support Engineer'],
         ['Product Designer', 'Frontend Developer', 'Full Stack Developer', 'Software Developer'],
         ['Backend Developer']
