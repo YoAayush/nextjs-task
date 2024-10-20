@@ -1,11 +1,14 @@
+import AuthRedirect from "@/components/authRedirect";
 import React from "react";
 
 const FormLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <div>
-            <main>
-                {children}
-            </main>
+            <AuthRedirect>
+                <main>
+                    {children}
+                </main>
+            </AuthRedirect>
         </div>
     );
 };
