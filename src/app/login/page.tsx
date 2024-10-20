@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -13,6 +13,7 @@ import axios from "axios";
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
+    const [isClient, setIsClient] = useState(false); // State to track client-side rendering
     const {
         register,
         handleSubmit,
@@ -20,6 +21,10 @@ export default function LoginPage() {
     } = useForm<LoginFormInputs>({
         resolver: zodResolver(loginSchema),
     });
+
+    useEffect(() => {
+        setIsClient(true); // This ensures that the component knows it's in the client side
+    }, []);
 
     const onSubmit = async (data: LoginFormInputs) => {
         console.log("Data:", data);
@@ -47,8 +52,11 @@ export default function LoginPage() {
 
             if (generatedToken === res2Data.jwtToken) {
                 console.log("Login Successful");
-                localStorage.setItem("authentication", "true");
-                window.location.href = "/dashboard";
+                if (isClient) {
+                    // Only set localStorage if running on client-side
+                    localStorage.setItem("authentication", "true");
+                    window.location.href = "/dashboard";
+                }
             } else {
                 console.log("Login Failed");
             }

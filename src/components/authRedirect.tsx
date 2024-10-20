@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ReactNode } from "react";
 
 interface AuthRedirectProps {
@@ -10,18 +10,21 @@ interface AuthRedirectProps {
 
 export default function AuthRedirect({ children }: AuthRedirectProps) {
     const router = useRouter();
-    const isAuthenticated = localStorage.getItem("authentication"); // Replace this with your actual authentication check
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        if (!isAuthenticated && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
+        const authStatus = localStorage.getItem("authentication");
+        setIsAuthenticated(!!authStatus);
+
+        if (!authStatus && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
             router.push("/login");
         }
-    }, [isAuthenticated, router]);
+    }, [router]);
 
     if (!isAuthenticated && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
         return null;
     }
 
-    // If the user is authenticated or is on an unprotected page, render the children
+    // Render the children if the user is authenticated or is on an unprotected page
     return <>{children}</>;
 }
