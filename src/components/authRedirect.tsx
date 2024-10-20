@@ -13,18 +13,22 @@ export default function AuthRedirect({ children }: AuthRedirectProps) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        const authStatus = localStorage.getItem("authentication");
-        setIsAuthenticated(!!authStatus);
+        // Only access localStorage if it's available (client-side)
+        if (typeof window !== "undefined") {
+            const authStatus = localStorage.getItem("authentication");
+            setIsAuthenticated(!!authStatus); // Convert authStatus to boolean
 
-        if (!authStatus && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
-            router.push("/login");
+            if (!authStatus && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
+                router.push("/login");
+            }
         }
     }, [router]);
 
-    if (!isAuthenticated && (window.location.pathname === "/dashboard" || window.location.pathname === "/form")) {
+    // Don't render protected pages if not authenticated
+    if (!isAuthenticated && (typeof window !== "undefined" && (window.location.pathname === "/dashboard" || window.location.pathname === "/form"))) {
         return null;
     }
 
-    // Render the children if the user is authenticated or is on an unprotected page
+    // Render children for authenticated users or public pages
     return <>{children}</>;
 }
