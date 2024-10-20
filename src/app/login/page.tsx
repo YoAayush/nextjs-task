@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import loginSchema from "./loginSchema";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
+    const router = useRouter();
     const [isClient, setIsClient] = useState(false); // State to track client-side rendering
     const {
         register,
@@ -55,7 +57,7 @@ export default function LoginPage() {
                 if (isClient) {
                     // Only set localStorage if running on client-side
                     localStorage.setItem("authentication", "true");
-                    window.location.href = "/dashboard";
+                    router.push("/dashboard");
                 }
             } else {
                 console.log("Login Failed");
