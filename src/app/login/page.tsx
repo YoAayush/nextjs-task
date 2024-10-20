@@ -23,6 +23,7 @@ export default function LoginPage() {
 
     const onSubmit = async (data: LoginFormInputs) => {
         console.log("Data:", data);
+        // Call the login API
         try {
             const res = await axios.post("/api/auth/jwt", {
                 email: data.email,
