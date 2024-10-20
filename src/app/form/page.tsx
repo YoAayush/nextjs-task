@@ -7,6 +7,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import axios from "axios";
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -25,8 +26,21 @@ export default function DynamicForm() {
         name: "fields",
     });
 
-    const onSubmit = (data: FormSchema) => {
-        console.log("Form Data", data);
+    const onSubmit = async (formData: FormSchema) => {
+        console.log("Form Data", formData);
+        try {
+            const res = await axios.post("/api/auth/formData", {
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                fields: formData.fields,
+            });
+            if (res.status === 200) {
+                console.log("Form Data Submitted Successfully");
+            }
+        } catch (error) {
+            console.log("Error", error);
+        }
     };
 
     const onError = (errors: object) => {

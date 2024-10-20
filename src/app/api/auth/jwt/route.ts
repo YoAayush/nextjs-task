@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
-  console.log("method hit", req.method);
+//   console.log("method hit", req.method);
 
   if (!process.env.JWT_SECRET) {
     return NextResponse.json(
