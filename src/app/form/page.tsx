@@ -29,7 +29,7 @@ export default function DynamicForm() {
         console.log("Form Data", data);
     };
 
-    const onError = (errors: any) => {
+    const onError = (errors: object) => {
         console.log("Validation Errors", errors);
     };
 
