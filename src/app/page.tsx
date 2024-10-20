@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <HomeLayout>
       <main>
-        {/* <Navbar /> */}
         <HeroSection />
         <Marquee />
         <OurServices />
@@ -25,7 +24,6 @@ export default function Home() {
         <RecentWorks />
         <Clients />
         <Questions />
-        {/* <Footer /> */}
       </main>
     </HomeLayout>
   );
