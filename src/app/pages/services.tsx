@@ -9,7 +9,7 @@ export default function OurServices() {
 
     const [expanded, setexpanded] = useState<number | null>(null);
 
-    const contents: { title: string; desc: string; examples: any; }[] = [
+    const contents: { title: string; desc: string; examples: string[]; }[] = [
         {
             title: "Generative AI Solutions",
             desc: "Innovative AI Software Solutions that grow your business, fit your budget, and create a lasting impact, all at the same time.",
