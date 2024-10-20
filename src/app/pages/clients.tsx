@@ -13,7 +13,7 @@ export default function Clients() {
         Autoplay({ delay: 2000, stopOnInteraction: true })
     )
 
-    const data: any = [
+    const data: { logo: string; desc: string; profile: string; name: string; company: string; }[] = [
         {
             logo: "/TestimonialLogo.svg",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, nisi eget lacinia.",
@@ -67,7 +67,7 @@ export default function Clients() {
             <Carousel plugins={[plugin.current]} className="w-auto mt-4">
                 <CarouselContent className="-ml-0 flex gap-10">
                     {
-                        data.map((item: any, index: number) => (
+                        data.map((item, index: number) => (
                             <CarouselItem
                                 key={index}
                                 className="bg-blue-50 py-4 rounded-xl md:basis-1/2 lg:basis-1/3"

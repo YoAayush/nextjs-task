@@ -6,8 +6,6 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel"
 import { useRef } from "react";
 import Image from "next/image";
@@ -18,7 +16,7 @@ export default function RecentWorks() {
         Autoplay({ delay: 4000, stopOnInteraction: true })
     )
 
-    const content: any = [
+    const content: { icon: string; title: string; description: string; image: string; keys: string[] }[] = [
         {
             icon: "/PortfolioLogo.svg",
             title: "Project Title",
@@ -55,12 +53,12 @@ export default function RecentWorks() {
             <Carousel
                 plugins={[plugin.current]}
                 className="w-full bg-gray-900 text-white rounded-2xl mt-4"
-                // onMouseEnter={plugin.current.stop}
-                // onMouseLeave={plugin.current.reset}
+            // onMouseEnter={plugin.current.stop}
+            // onMouseLeave={plugin.current.reset}
             >
                 <CarouselContent>
                     {
-                        content.map((item: any, index: number) => (
+                        content.map((item, index: number) => (
                             <CarouselItem key={index} className="flex flex-row items-center justify-center gap-8 py-8">
                                 <div className="flex flex-col gap-3">
                                     <span className="flex gap-2">
