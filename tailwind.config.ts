@@ -26,6 +26,7 @@ const config: Config = {
       backgroundImage: {
         hero: "url('/teamwork.jpg')",
         footer: "url('/Footer.webp')",
+        accelerate: "url('/Accelerate.webp')",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

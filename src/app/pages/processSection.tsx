@@ -29,7 +29,7 @@ const processSteps: ProcessStep[] = [
 
 export default function ProcessSection() {
     return (
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="mt-28 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Our Process!</h2>
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-700 mb-12">The Journey of Your Ideas</h3>

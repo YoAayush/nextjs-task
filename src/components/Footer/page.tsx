@@ -1,14 +1,13 @@
 "use client";
 
-import Link from 'next/link'
+import Link from 'next/link';
 import { FaFacebookF, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
-
     return (
-        <footer className="bg-footer bg-no-repeat bg-cover mt-12 py-4 px-28 text-white font-lato">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <footer className="bg-footer bg-no-repeat bg-cover mt-12 py-8 px-6 md:px-14 lg:px-28 text-white font-lato">
+            <div className="container mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div>
                         <h2 className="text-2xl font-bold mb-4">Techype</h2>
                         <p className="text-sm">
@@ -40,7 +39,7 @@ export default function Footer() {
                         <p className="mb-2">+919289034933</p>
                         <p className="mb-4">business@techype.in</p>
                         <h4 className="font-semibold mb-2">India Office</h4>
-                        <p className="mb-4">Plot no. 100C, Sector 4, Vaishali Ghaziabad, uttar pardesh 201012</p>
+                        <p className="mb-4">Plot no. 100C, Sector 4, Vaishali Ghaziabad, Uttar Pradesh 201012</p>
                         <h4 className="font-semibold mb-2">USA Office</h4>
                         <p>440 N Barranca Ave #7914, Covina, CA 91723, USA</p>
                     </div>
@@ -64,5 +63,5 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-    )
+    );
 }
