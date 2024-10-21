@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
+import { formError, formSubmitted } from "@/components/popup-toasts";
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -36,6 +37,7 @@ export default function DynamicForm() {
                 fields: formData.fields,
             });
             if (res.status === 200) {
+                formSubmitted();
                 console.log("Form Data Submitted Successfully");
             }
         } catch (error) {
@@ -44,6 +46,7 @@ export default function DynamicForm() {
     };
 
     const onError = (errors: object) => {
+        formError();
         console.log("Validation Errors", errors);
     };
 

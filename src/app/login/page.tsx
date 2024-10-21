@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import loginSchema from "./loginSchema";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { loginErrorToast, loginSuccessToast } from "@/components/popup-toasts";
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
@@ -58,8 +59,10 @@ export default function LoginPage() {
                     // Only set localStorage if running on client-side
                     localStorage.setItem("authentication", "true");
                     router.push("/dashboard");
+                    loginSuccessToast();
                 }
             } else {
+                loginErrorToast();
                 console.log("Login Failed");
             }
         } catch (error) {
