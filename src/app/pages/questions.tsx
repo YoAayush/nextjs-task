@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export default function Questions() {
-
     const [active, setActive] = useState<number | null>(null);
 
     const Questions: { title: string; desc: string; }[] = [
@@ -26,32 +24,44 @@ export default function Questions() {
             desc: "Yes! Techype is here to make sure that you get progress updates about your project whenever you want. You can keep a tab on the whole process of your product development with the help of our productivity tools, maintaining the transparency that we promised."
         },
         {
-            title: "what are some industries that you provide your services to ?",
+            title: "What are some industries that you provide your services to ?",
             desc: "Techype is growing each day by expanding our services to a wide range of industries. We have been excelling in the field of health tech solutions, job listing platforms, and AI web development. We are presently the best mobile app development company, successfully bringing ideas to life."
         },
         {
             title: "Is my project idea safe with Techype ?",
             desc: "Your project idea is 100% safe with us. At Techype, we prioritize the confidentiality of our clients and their ideas at all times and to do this, we sign a Non-Disclosure Agreement (NDA) with you to ensure that your project idea is in safe hands."
         }
-    ]
+    ];
 
     return (
-        <section className="font-lato mt-24 px-28 bg-blue-50">
-            <p className="text-gray-900 text-[30px] text-center pt-4">Frequently Asked Questions</p>
-            <div className="grid grid-cols-1 gap-4 mt-8">
+        <section className="font-lato mt-16 px-4 md:px-16 lg:px-28 bg-blue-50">
+            <p className="text-gray-900 text-2xl md:text-3xl lg:text-[30px] text-center pt-4">
+                Frequently Asked Questions
+            </p>
+            <div className="grid grid-cols-1 gap-4 mt-6 md:mt-8">
                 {
                     Questions.map((question, index) => (
-                        <div key={index} className="border-b-[1px] border-gray-300 py-2 cursor-pointer" onClick={() => { setActive(active === index ? null : index) }}>
-                            <p className={`text-[20px] flex justify-between ${active === index ? 'text-blue-600' : 'text-gray-800'}`}>{question.title}
-                                <span>{active === index ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
+                        <div
+                            key={index}
+                            className="border-b border-gray-300 py-2 cursor-pointer"
+                            onClick={() => { setActive(active === index ? null : index) }}
+                        >
+                            <p className={`text-lg md:text-xl flex justify-between items-center ${active === index ? 'text-blue-600' : 'text-gray-800'}`}>
+                                {question.title}
+                                <span className="ml-2">
+                                    {active === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                </span>
                             </p>
                             {
-                                active === index && <p className="text-gray-600 mt-2">{question.desc}</p>
+                                active === index &&
+                                <p className="text-gray-600 mt-2 text-sm md:text-base">
+                                    {question.desc}
+                                </p>
                             }
                         </div>
                     ))
                 }
             </div>
         </section>
-    )
+    );
 }

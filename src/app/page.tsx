@@ -10,6 +10,9 @@ import RecentWorks from "./pages/recentWorks";
 import Clients from "./pages/clients";
 import Questions from "./pages/questions";
 import HomeLayout from "./homeLayout/layout";
+import Industries from "./pages/industries";
+import Articles from "./pages/articles";
+import AcclerateIdea from "./pages/acclerateIdea";
 
 export default function Home() {
 
@@ -21,8 +24,11 @@ export default function Home() {
         <OurServices />
         <TalentPage />
         <ProcessSection />
+        <Industries />
         <RecentWorks />
         <Clients />
+        <Articles />
+        <AcclerateIdea />
         <Questions />
       </main>
     </HomeLayout>

@@ -6,7 +6,6 @@ import { FiArrowRightCircle } from "react-icons/fi";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 
 export default function OurServices() {
-
     const [expanded, setexpanded] = useState<number | null>(null);
 
     const contents: { title: string; desc: string; examples: string[]; }[] = [
@@ -40,35 +39,57 @@ export default function OurServices() {
             desc: "We transform your ideas into beautiful UI/UX designs. Designs so beautiful that they make you look twice, bring user engagement & enhance user experience",
             examples: ['Wireframing', 'Prototyping', 'User Research', 'Branding', 'Designing', 'Cross-Platform Consistency']
         }
-    ]
+    ];
 
     return (
-        <div className="relative bg-[#101828] px-28 pt-4 pb-8 text-white font-lato">
-            <Image src="/spotlight.svg" alt="team work" width="1080" height="1080" className="absolute top-0 -left-60  w-[50rem] h-[30rem]" />
-            <div className="flex justify-between items-center">
-                <span className="text-[35px] font-semibold">Discover <br /> Our Services</span>
-                <p className="w-[35rem]">We Deliver Products that Boost Your Business. When we work, we work with a commitment to deliver products that stand out from the rest. We make sure that your impactful ideas are transformed into even more impactful products</p>
+        <div className="relative bg-[#101828] px-4 md:px-16 lg:px-28 pt-4 pb-8 text-white font-lato">
+            <Image
+                src="/spotlight.svg"
+                alt="team work"
+                width="1080"
+                height="1080"
+                className="absolute top-0 -left-60 w-[30rem] h-[18rem] md:w-[40rem] md:h-[24rem] lg:w-[50rem] lg:h-[30rem]"
+            />
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <span className="text-2xl md:text-3xl lg:text-[35px] font-bold">
+                    Discover <br className="md:hidden" /> Our Services
+                </span>
+                <p className="md:w-[28rem] lg:w-[35rem] text-sm md:text-base">
+                    We Deliver Products that Boost Your Business. When we work, we work with a commitment to deliver products that stand out from the rest. We make sure that your impactful ideas are transformed into even more impactful products.
+                </p>
             </div>
-            <div className="flex flex-col justify-center mt-6">
+            <div className="flex flex-col justify-center mt-4">
                 {
                     contents.map((content, index) => (
-                        <div key={index} className="border-b-[1px] border-gray-500 py-2 cursor-pointer mt-4" onClick={() => { setexpanded(expanded === index ? null : index) }}>
-                            <p className="text-[30px] flex justify-between">{content.title}<span>
-                                {
-                                    expanded === index ? <BsArrowUpRightCircle /> : <FiArrowRightCircle />
-                                }
-                            </span></p>
+                        <div
+                            key={index}
+                            className="border-b border-gray-500 py-2 cursor-pointer mt-8"
+                            onClick={() => { setexpanded(expanded === index ? null : index) }}
+                        >
+                            <p className="text-xl md:text-2xl lg:text-[30px] flex justify-between items-center">
+                                {content.title}
+                                <span className="ml-2">
+                                    {expanded === index ? <BsArrowUpRightCircle /> : <FiArrowRightCircle />}
+                                </span>
+                            </p>
                             {
                                 expanded === index && (
                                     <div className="mt-6">
-                                        <div className="flex gap-5">
+                                        <div className="flex flex-wrap gap-2 md:gap-4">
                                             {
                                                 content.examples.map((example: string, index: number) => (
-                                                    <span key={index} className="px-2 py-1 bg-[#1e2a43] rounded-2xl">{example}</span>
+                                                    <span
+                                                        key={index}
+                                                        className="px-2 py-1 bg-[#1e2a43] rounded-2xl text-sm md:text-base"
+                                                    >
+                                                        {example}
+                                                    </span>
                                                 ))
                                             }
                                         </div>
-                                        <p className="text-[20px] mt-4">{content.desc}</p>
+                                        <p className="text-sm md:text-base lg:text-[20px] mt-4">
+                                            {content.desc}
+                                        </p>
                                     </div>
                                 )
                             }
@@ -77,5 +98,5 @@ export default function OurServices() {
                 }
             </div>
         </div>
-    )
+    );
 }
